@@ -1,0 +1,3 @@
+# PRESCRIPTION-GENERATOR
+
+![Image 2023-09-08 at 11 06 PM](https://github.com/TaranPannu/PRESCRIPTION-GENERATOR/assets/99615766/7f29cff8-dfc1-4475-8753-3879e05ceeca)
