@@ -225,6 +225,21 @@ class Hospital:
             command=self.update,
         )
         btnpers.grid(row=0, column=4)
+        btnpers = Button(
+            ButtonFrame,
+            text="Delete",
+             bg="blue",
+            fg="black",
+            font=("arial", 12, "bold"),
+            width=15,
+            height=1,
+            padx=10,
+            pady=9,
+            borderwidth=1,
+            relief="ridge",
+            command=self.idelete,
+        )
+        btnpers.grid(row=0, column=6)
         # ---------------------------------Table---------------------------------
         scroll_x = ttk.Scrollbar(DetailsFrame, orient=HORIZONTAL)
         scroll_y = ttk.Scrollbar(DetailsFrame, orient=VERTICAL)
@@ -328,6 +343,21 @@ class Hospital:
                     ),)
              conn.commit()
              conn.close()
+    def idelete(self):
+        conn = mysql.connector.connect(
+            host="localhost",
+            username="root",
+            password="Mysql!1221",
+            database="hospital",
+        )
+        mycursor = conn.cursor()
+        query="delete from hospital where patientage=%s"
+        value=(self.patientage.get(),)
+        mycursor.execute(query,value)
+        conn.commit()
+        conn.close()
+        self.fetch_data()
+        messagebox.showinfo("Delete","Patient has been deleted successfully")
 root = Tk()
 ob = Hospital(root)
 root.mainloop()
